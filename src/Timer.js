@@ -7,6 +7,15 @@ class Timer extends Component {
   };
 
   // add your code here
+  componentDidMount() {
+    this.interval = setInterval(this.clockTick, 1000)
+  };
+
+  componentWillUnmount() {
+    this.stopClock();
+    // why didn't this work? clearInterval does the intended action and didn't get a problem in the tests...
+    // clearInterval(this.interval)
+  }; 
 
   render() {
     const { time, color } = this.state;
